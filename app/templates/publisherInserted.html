@@ -1,0 +1,19 @@
+{%  extends "layout.html" %}
+
+{%  block content %}
+
+    <p>Publisher Inserted: <strong>{{ query }}</strong></p>
+
+    {% if pub %}
+        <ul>
+            <li>Name: {{ pub.name }}</li>
+            <li>City: {{ pub.city }}</li>
+            <li>Country: {{ pub.country }}</li>
+            <li>Website: {{ pub.website }}</li>
+
+        </ul>
+    {% else %}
+        <p>Not found any result.</p>
+    {% endif %}
+
+{%  endblock %}

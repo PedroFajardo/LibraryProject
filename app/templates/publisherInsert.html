@@ -1,0 +1,22 @@
+{%  extends "layout.html" %}
+
+{%  block content %}
+
+    {% if error %}
+        <p style="color:red">ERROR: Insert a query term.</p>
+    {% endif %}
+    {% if exists %}
+        <p style="color:red">ERROR: Publisher already exists.</p>
+    {% endif %}
+
+    <form action="." method="post">
+        <h2>Publisher Insert</h2>
+        {% csrf_token %}
+        <p>Name: <input type="text" name="name"></p>
+        <p>City: <input type="text" name="city"></p>
+        <p>Country: <input type="text" name="country"></p>
+        <p>Website: <input type="text" name="website"></p>
+        <input type="submit" value="Insert">
+    </form>
+
+{%  endblock %}

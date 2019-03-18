@@ -1,0 +1,13 @@
+{%  extends "layout.html" %}
+
+{%  block content %}
+
+    {% if aut %}
+        <p>Author Inserted: <strong>{{ query }}</strong></p>
+        <ul>
+            <li>Name: {{ aut.name }}</li>
+            <li>Email: {{ aut.email }}</li>
+        </ul>
+    {% endif %}
+
+{%  endblock %}

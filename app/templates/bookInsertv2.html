@@ -1,0 +1,52 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+
+    <div class="row">
+        <div class="col-md-8">
+            <section id="insbookForm">
+                <form action="." method="post" class="form-horizontal">
+                    {% csrf_token %}
+                    <h4>Insert query to insert Book.</h4>
+                    <hr/>
+                    {% if error %}
+                        <p style="color:red">ERROR: Insert a query term.</p>
+                    {% endif %}
+                    {% if exists %}
+                        <p style="color:red">ERROR: Book already exists.</p>
+                    {% endif %}
+                    <div class="form-group">
+                        {{ form.title.label_tag }}
+                        <div class="col-md-10">
+                            {{ form.title }}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        {{ form.date.label_tag }}
+                        <div class="col-md-10">
+                            {{ form.date }}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        {{ form.authors.label_tag }}
+                        <div class="col-md-10">
+                            {{ form.authors }}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        {{ form.publisher.label_tag }}
+                        <div class="col-md-10">
+                            {{ form.publisher }}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="Insert" class="btn btn-default"/>
+                        </div>
+                    </div>
+                </form>
+            </section>
+        </div>
+    </div>
+
+{% endblock %}

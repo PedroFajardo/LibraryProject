@@ -1,0 +1,52 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+
+    <div class="row">
+        <div class="col-md-8">
+            <section id="inspublisherForm">
+                <form action="." method="post" class="form-horizontal">
+                    {% csrf_token %}
+                    <h4>Insert query to insert Publishers.</h4>
+                    <hr/>
+                    {% if error %}
+                        <p style="color:red">ERROR: Insert a query term.</p>
+                    {% endif %}
+                    {% if exists %}
+                        <p style="color:red">ERROR: Publisher already exists.</p>
+                    {% endif %}
+                    <div class="form-group">
+                        {{ form.name.label_tag }}
+                        <div class="col-md-10">
+                            {{ form.name }}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        {{ form.city.label_tag }}
+                        <div class="col-md-10">
+                            {{ form.city }}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        {{ form.country.label_tag }}
+                        <div class="col-md-10">
+                            {{ form.country }}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        {{ form.website.label_tag }}
+                        <div class="col-md-10">
+                            {{ form.website }}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="Insert" class="btn btn-default"/>
+                        </div>
+                    </div>
+                </form>
+            </section>
+        </div>
+    </div>
+
+{% endblock %}

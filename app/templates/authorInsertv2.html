@@ -1,0 +1,40 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+
+    <div class="row">
+        <div class="col-md-8">
+            <section id="insauthorForm">
+                <form action="." method="post" class="form-horizontal">
+                    {% csrf_token %}
+                    <h4>Insert query to insert Authors.</h4>
+                    <hr/>
+                    {% if error %}
+                        <p style="color:red">ERROR: Insert a query term.</p>
+                    {% endif %}
+                    {% if exists %}
+                        <p style="color:red">ERROR: Author already exists.</p>
+                    {% endif %}
+                    <div class="form-group">
+                        {{ form.name.label_tag }}
+                        <div class="col-md-10">
+                            {{ form.name }}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        {{ form.email.label_tag }}
+                        <div class="col-md-10">
+                            {{ form.email }}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="insert" class="btn btn-default"/>
+                        </div>
+                    </div>
+                </form>
+            </section>
+        </div>
+    </div>
+
+{% endblock %}

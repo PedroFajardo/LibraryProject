@@ -1,0 +1,41 @@
+{%  extends "layout.html" %}
+
+{%  block content %}
+
+    {% if error %}
+        <p style="color:red">ERROR: Insert a query term.</p>
+    {% endif %}
+    {% if exists %}
+        <p style="color:red">ERROR: Book already exists.</p>
+    {% endif %}
+
+    <form action="." method="post">
+        <h2>Book Insert</h2>
+        {% csrf_token %}
+        <p>Title: <input type="text" name="title"></p>
+        <p>Date: <input type="date" name="date"></p>
+
+        <p>Author(s):
+            {% if authors %}
+                <select multiple name="auts">Authors
+                    {% for author in authors %}
+                        <option value="{{ author.name }}">{{ author.name }}</option>
+                    {% endfor %}
+                </select>
+            {% endif %}
+        </p>
+
+        <p>Publisher:
+            {% if publishers %}
+                <select name="pub">Publishers
+                    {% for publisher in publishers %}
+                        <option value="{{ publisher }}">{{ publisher.name }}</option>
+                    {% endfor %}
+                </select>
+            {% endif %}
+        </p>
+
+        <input type="submit" value="Insert">
+    </form>
+
+{%  endblock %}

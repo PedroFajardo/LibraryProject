@@ -1,0 +1,21 @@
+{%  extends "layout.html" %}
+
+{%  block content %}
+
+    {% if book %}
+        <p>Book Inserted: <strong>{{ query }}</strong></p>
+        <ul>
+            <li>{{ book.title }}</li>
+            <ul>
+                <li>{{ book.publisher }}</li>
+                <li>{{ book.date }}</li>
+                <ul>
+                    {% for aut in book.authors.all %}
+                        <li>{{ aut }}</li>
+                    {% endfor %}
+                </ul>
+            </ul>
+        </ul>
+    {% endif %}
+
+{%  endblock %}

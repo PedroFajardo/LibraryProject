@@ -1,0 +1,18 @@
+{%  extends "layout.html" %}
+
+{%  block content %}
+
+    <p>Search by: <strong>{{ query }}</strong></p>
+
+    {% if auts %}
+        <p>Found {{ auts|length }} author{{ auts|pluralize}}</p>
+        <ul>
+            {% for aut in auts %}
+                <li>{{ aut.name }}</li>
+                <li>{{ aut.email }}</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>Not found any result.</p>
+    {% endif %}
+{%  endblock %}
